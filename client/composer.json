@@ -1,0 +1,6 @@
+{
+    "require": {
+        "whatsapp/chat-api": "^3.2",
+        "vlucas/phpdotenv": "^2.2"
+    }
+}
