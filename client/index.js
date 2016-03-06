@@ -3,10 +3,12 @@ var client = spawn('php', ['client.php']);
 
 client.stdout.on('data', function (data) {
   try {
-    var decoded = JSON.parse(data.toString().trim().replace(/^\s+|\s+$/g, ''));
-    console.log(decoded.method);
+    var decoded = data.toString().trim().split('\r\n').map(JSON.parse);
+    decoded.forEach(function(e) {
+      console.log(e.method)
+    });
   } catch (e) {
-    console.log(data.toString().trim().replace(/^\s+|\s+$/g, ''));
+    console.log(data.toString().trim());
     console.log('Bad controll msg');
   }
 });

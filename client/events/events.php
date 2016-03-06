@@ -94,6 +94,6 @@ class MyEvents extends AllEvents
       $response->method = $method;
       $response->args = $args;
 
-      echo json_encode($response);
+      echo json_encode($response) . "\r\n";
     }
 }
