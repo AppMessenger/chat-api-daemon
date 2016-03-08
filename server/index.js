@@ -1,5 +1,5 @@
 var spawn = require('child_process').spawn;
-var client = spawn('php', ['client.php']);
+var client = spawn('php', ['../client/client.php']);
 
 client.stdout.on('data', function (data) {
   try {
