@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__.'/../vendor/whatsapp/chat-api/src/events/AllEvents.php';
+require 'vendor/whatsapp/chat-api/src/events/AllEvents.php';
 
 class MyEvents extends AllEvents
 {

@@ -3,16 +3,13 @@
 require 'vendor/autoload.php';
 require 'events/events.php';
 
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
-
-$w = new WhatsProt(getenv('NUMBER'), getenv('NICKNAME'));
+$w = new WhatsProt($argv[1], $argv[2]);
 
 $events = new MyEvents($w);
 $events->setEventsToListenFor($events->activeEvents);
 
 $w->connect();
-$w->loginWithPassword(getenv('PASSWORD'));
+$w->loginWithPassword($argv[3]);
 
 stream_set_blocking(STDIN, false);
 
