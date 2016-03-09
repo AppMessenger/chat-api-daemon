@@ -8,6 +8,7 @@ client.stdout.on('data', function (data) {
   try {
     data.toString().trim().split('\r\n').map(JSON.parse).forEach(function(e) {
       whatsapp.emit('whatsapp_event', e.method, e.args);
+      whatsapp.emit(e.method, e.args);
     });
 
   } catch (e) {
@@ -24,3 +25,7 @@ whatsapp.on('whatsapp_event', function(method, args) {
   console.log(method);
   console.log(args);
 })
+
+whatsapp.on('send_command', function(method, args) {
+  client.stdin.write(JSON.stringify({method: method, args: args}));
+});
