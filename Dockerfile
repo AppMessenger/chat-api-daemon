@@ -1,4 +1,4 @@
-FROM mawalu:chat-api-base:latest
+FROM mawalu/chat-api-base:latest
 
 MAINTAINER Martin Wagner (mawalu)
 
