@@ -23,7 +23,7 @@ whatsapp.onMessage = function (data) {
 
   } catch (e) {
     console.log(data.toString().trim());
-    console.log('Bad controll msg');
+    //console.log('Bad controll msg');
   }
 }
 

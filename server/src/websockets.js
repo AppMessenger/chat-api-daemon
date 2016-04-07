@@ -12,7 +12,6 @@ websockets.init = function(port, EventEmitter) {
 
 websockets.handleConnection = function(ws) {
   ws.on('message', function(message) {
-    console.log(message);
     message = JSON.parse(message);
     websockets.EventEmitter.emit('send_command', message.method, message.args);
   })

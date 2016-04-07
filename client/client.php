@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 require 'events/events.php';
 
-$w = new WhatsProt($argv[1], $argv[2]);
+$w = new WhatsProt($argv[1], $argv[2], true);
 
 $events = new MyEvents($w);
 $events->setEventsToListenFor($events->activeEvents);
@@ -21,9 +21,9 @@ while(true) {
     foreach ($input as $command) {
       $command = json_decode($command);
       call_user_func_array(array($w, $command->method), $command->args);
+      while ($w->pollMessage());
     }
   }
 
   $w->pollMessage();
-  sleep(1);
 }

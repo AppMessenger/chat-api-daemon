@@ -9,7 +9,3 @@ whatsapp.EventEmitter.on('whatsapp_event', function(method, args) {
   console.log(method);
   console.log(args);
 })
-
-setTimeout(function() {
-  whatsapp.EventEmitter.emit('send_command', 'sendMessage', ['4915253602422', 'hello world']);
-}, 5000);
