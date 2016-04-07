@@ -1,21 +1,34 @@
 var request = require('request');
+var http = require('http');
 
 var httpServer = {}
 
 httpServer.init = function(port, callbackUrls, EventEmitter) {
   httpServer.EventEmitter = EventEmitter;
   httpServer.callbackUrls = callbackUrls;
-  //httpServer.wss = new WebSocketServer({ port: port });
 
-  //websockets.wss.on('connection', websockets.handleConnection);
+  httpServer.server = http.createServer(httpServer.handleRequest);
+  httpServer.server.listen(port);
+
   httpServer.EventEmitter.on('whatsapp_event', httpServer.handleWhatsappEvent);
 }
 
-httpServer.handleConnection = function(ws) {
-  ws.on('message', function(message) {
-    message = JSON.parse(message);
-    websockets.EventEmitter.emit('send_command', message.method, message.args);
+httpServer.handleRequest = function(req, res) {
+  var data = '';
+
+  req.on('data', function(chunck) {
+    data += chunck.toString();
   })
+
+  req.on('end', function() {
+    data = JSON.parse(data);
+
+    httpServer.EventEmitter.emit('send_command', data.method, data.args);
+
+    res.end('Command dispatched');
+  })
+
+  //websockets.EventEmitter.emit('send_command', message.method, message.args);
 }
 
 httpServer.handleWhatsappEvent = function(method, args) {
