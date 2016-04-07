@@ -9,6 +9,7 @@
   "author": "",
   "license": "GPL",
   "dependencies": {
-    "ws": "~1.0.1"
+    "ws": "~1.0.1",
+    "request": "~2.70.0"
   }
 }
