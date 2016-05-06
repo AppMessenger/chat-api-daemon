@@ -8,8 +8,7 @@ COPY . /app
 
 EXPOSE 8080 8081
 
-RUN curl https://getcomposer.org/composer.phar -o /bin/composer
-
+RUN curl https://getcomposer.org/composer.phar -o /bin/composer && chmod +x /bin/composer
 RUN cd /app/client && composer install
 
 WORKDIR /app/server
