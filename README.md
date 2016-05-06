@@ -9,7 +9,7 @@ This projects provides multiple apis to access whatsapp using the php [chat-api 
 Before you can start you have to obtain a whatsapp username and password for the api. Have a look at the [chat-api documation](https://github.com/mgp25/Chat-API/wiki/WhatsApp-Registration-Flow) for this. If you have these two you can run:
 
 ```
-docker run -it -a stdin -a stdout -p 127.0.0.1:8080:8080 -e "NUMBER=phonenumber" -e "PASSWORD='whatsapp_password'" -e "WEBSOCKET_PORT=8081" -e "HTTP_PORT=8080" mawalu/chat-api-daemon
+docker run -it --rm -p 127.0.0.1:8080:8080 -p 127.0.0.1:8081:8081 -e "NUMBER=your_number" -e "PASSWORD='whatsapp_password'" -v $(pwd)/wadata:/app/client/vendor/whatsapp/chat-api/src/wadata mawalu/chat-api-daemon
 ```
 
 Replace the environment variables with your values and after everything is downloaded you should be ready to go.
