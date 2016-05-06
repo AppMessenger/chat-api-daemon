@@ -20,3 +20,6 @@ RUN cd /build/php-protobuf && phpize && ./configure && make && make install && e
 
 # Enable php modules
 RUN php5enmod mcrypt curve25519 protobuf
+
+# Install composer
+RUN curl https://getcomposer.org/composer.phar -o /bin/composer && chmod +x /bin/composer
