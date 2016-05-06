@@ -8,6 +8,10 @@ COPY . /app
 
 EXPOSE 8080 8081
 
+RUN curl https://getcomposer.org/composer.phar -o /bin/composer
+
+RUN cd /app/client && composer install
+
 WORKDIR /app/server
 
 RUN apt-get update && apt-get install -y nodejs npm
