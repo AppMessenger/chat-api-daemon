@@ -33,7 +33,7 @@ To trigger methods over http you can do something like:
 curl -H "Content-Type: application/json" -X POST -d '{"method":"sendMessage","args":["12344356", "hello world"]}' http://127.0.0.1:8080
 ```
 
-If you want to receive http notifications via webhooks, set a environment variable called `CALLBACK_URLS` to a comma separated list of urls.  (I can recommend [requestb.in](https://requestb.in) to test webhooks)
+If you want to receive http notifications via webhooks, set a environment variable called `CALLBACK_URLS` to a comma separated list of urls.  (I can recommend [requestb.in](http://requestb.in) to test webhooks)
 
 To use this from your favorite language you have to look up how to use http or websockets there and decide which one suits you better.
 
